@@ -43,10 +43,6 @@ def main():
             selected_columns = st.multiselect("selected columns",df.columns)
             if number[0] <= number[1] and len(selected_columns) > 0:
                 st.write(df[selected_columns][number[0]:number[1]+1])
-        st.header("Data information")
-        selected_columns = st.multiselect("selected columns", df.columns)
-        if len(selected_columns) > 0:
-            st.write(df[selected_columns].describe().T)
     elif page == "Data exploration":
         df = load_data()
         st.title("Data Exploration")

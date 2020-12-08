@@ -1,0 +1,17 @@
+selected_feature = ['area error',
+                    'compactness error',
+                    'mean area',
+                    'mean compactness',
+                    'mean concave points',
+                    'mean concavity',
+                    'mean perimeter',
+                    'mean radius',
+                    'mean smoothness',
+                    'mean texture',
+                    'perimeter error',
+                    'radius error',
+                    'worst compactness',
+                    'worst concavity',
+                    'worst perimeter',
+                    'worst radius'
+                    ]

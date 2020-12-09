@@ -20,7 +20,6 @@ def get_user_input(df, selected_feature):
     features = pd.DataFrame(user_data, index=[0])
     return features
 
-
 def train_test(X, y, size):
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=size, random_state=111)

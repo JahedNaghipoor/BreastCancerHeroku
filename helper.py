@@ -14,11 +14,13 @@ def load_data():
         cancer['feature_names'], 'target'))
     return df
 
+
 def get_user_input(df, selected_feature):
     user_data = {feature: st.sidebar.slider(feature, math.floor(df[feature].min())*1.0, math.floor(
         df[feature].max())*1.0+1, math.floor(df[feature].mean())*1.0) for feature in selected_feature}
     features = pd.DataFrame(user_data, index=[0])
     return features
+
 
 def train_test(X, y, size):
     X_train, X_test, y_train, y_test = train_test_split(

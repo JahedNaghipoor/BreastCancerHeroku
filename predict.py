@@ -32,6 +32,7 @@ def predictions(df, size, user_input, selected=False):
         'New Data Prediction': [predict_KNN, predict_regression, predict_decision_tree, predict_rf]})
     return models.sort_values(by='Test Score', ascending=False)
 
+
 def scaling(selected, df, size, user_input):
     if selected:
         X = df[selected]

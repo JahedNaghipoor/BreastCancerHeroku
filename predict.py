@@ -30,7 +30,7 @@ def predictions(df, size, user_input, selected=False):
         'Model': ['KNN (k=5)', 'Logistic Regression', 'Decision Tree','Random Forest'],
         'Test Score': [accuracy_KNN, accuracy_regression, accuracy_decision_tree,accuracy_rf],
         'New Data Prediction': [predict_KNN, predict_regression, predict_decision_tree, predict_rf]})
-    return models.sort_values(by='Test Score', ascending=False, ignore_index=True)
+    return models.sort_values(by='Test Score', ascending=False)
 
 def scaling(selected, df, size, user_input):
     if selected:
@@ -99,6 +99,8 @@ def plot_learning_curve(df, selected=False):
     test_mean = np.mean(test_scores, axis=1)
     test_std = np.std(test_scores, axis=1)
 
+
+    fig, axes = plt.subplots()
     plt.plot(train_sizes, train_mean, '--',
             color="#111111",  label="Training score")
     plt.plot(train_sizes, test_mean, color="#111111",
@@ -112,4 +114,4 @@ def plot_learning_curve(df, selected=False):
     plt.title("Learning Curve")
     plt.xlabel("Training Set Size"), plt.ylabel(
         "Accuracy Score"), plt.legend(loc="best")
-    st.pyplot()
+    st.pyplot(fig)

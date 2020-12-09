@@ -66,8 +66,9 @@ def main():
         elif plot_type == 'Correlation':
             selected_columns = st.multiselect("selected columns", df.columns)
             if len(selected_columns) > 1:
+                fig, axes = plt.subplots()
                 sns.heatmap(df[selected_columns].corr(), annot=True, cmap='coolwarm')
-                st.pyplot()
+                st.pyplot(fig)
         elif plot_type == 'Train-test dist plot':
             split_size = st.slider(
                 "Choose split percentage: ", 0.01, 0.99, 0.2)

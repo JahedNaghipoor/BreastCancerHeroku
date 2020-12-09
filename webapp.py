@@ -28,6 +28,9 @@ def main():
             selected_columns = st.multiselect("selected columns",df.columns)
             if number[0] <= number[1] and len(selected_columns) > 0:
                 st.write(df[selected_columns][number[0]:number[1]+1])
+        extra_info = st.checkbox("Show extra information?")
+        if extra_info:
+            st.write(df.describe().T)
     elif page == "Data exploration":
         df = h.load_data()
         st.title("Data Exploration")
@@ -75,8 +78,6 @@ def main():
             sns.distplot(ax=axes[0], x=X_train[selected])
             sns.distplot(ax=axes[1], x=X_test[selected])
             st.pyplot(fig)
-
-
     elif page == "Prediction":
         st.write(""" # Breast Cancer Prediction """)
         df = h.load_data()
@@ -85,19 +86,20 @@ def main():
         split_size = 0.2
         split = st.checkbox("Change train test split?")
         feature_selection = st.checkbox("Select features?")
+        learning_curve = st.checkbox("Show learning curve for Random Forest?")
         if split:
             split_size = st.slider("Choose split percentage: ",0.01, 0.99, 0.2)
             X_train, X_test, y_train, y_test = h.train_test(X, y, split_size)
-        if feature_selection:
+        if feature_selection or learning_curve:
             selected = st.multiselect("Select some columns", selected_feature)
             if len(selected) > 0 :
                 user_input = h.get_user_input(df, selected)
                 st.write(predict.predictions(df, split_size, user_input, selected))
+            if learning_curve:
+                predict.plot_learning_curve(df, selected)
         else:
             user_input = h.get_user_input(df, config.selected_feature)
             st.write(predict.predictions(df, split_size, user_input))
-        st.pyplot()
-
 
 if __name__ == '__main__':
     main()

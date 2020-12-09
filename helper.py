@@ -14,13 +14,6 @@ def load_data():
         cancer['feature_names'], 'target'))
     return df
 
-
-def visualize_data(df, x_axis, y_axis):
-    graph = alt.Chart(df).mark_circle(size=60).encode(
-        x=x_axis, y=y_axis).interactive()
-    st.write(graph)
-
-
 def get_user_input(df, selected_feature):
     user_data = {feature: st.sidebar.slider(feature, math.floor(df[feature].min())*1.0, math.floor(
         df[feature].max())*1.0+1, math.floor(df[feature].mean())*1.0) for feature in selected_feature}

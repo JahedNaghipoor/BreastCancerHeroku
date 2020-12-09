@@ -6,6 +6,7 @@ import streamlit as st
 from sklearn.datasets import load_breast_cancer
 from sklearn.model_selection import train_test_split
 
+
 @st.cache
 def load_data():
     cancer = load_breast_cancer()
@@ -31,3 +32,16 @@ def train_test(X, y, size):
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=size, random_state=111)
     return X_train, X_test, y_train, y_test
+
+def max_width():
+    max_width_str = f"max-width: 1200px;"
+    st.markdown(
+        f"""
+    <style>
+    .reportview-container .main .block-container{{
+        {max_width_str}
+    }}
+    </style>
+    """,
+        unsafe_allow_html=True,
+    )

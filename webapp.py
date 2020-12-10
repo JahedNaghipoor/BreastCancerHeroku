@@ -12,7 +12,7 @@ import predict
 def main():
     
     h.max_width()
-    #st.set_option('deprecation.showPyplotGlobalUse', False)
+    st.set_option('deprecation.showPyplotGlobalUse', False)
     
     selected_feature = config.selected_feature
     

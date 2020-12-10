@@ -23,7 +23,7 @@ def main():
         df = h.load_data()
         show_selected = st.checkbox("Show selected data?")
         if show_selected is not True:
-            st.write(df.head(20))
+            st.write(df.head(10))
         else:
             number = st.slider("Choose the interval: ", 0, df.shape[0], (0, 19))
             selected_columns = st.multiselect("selected columns",df.columns)
